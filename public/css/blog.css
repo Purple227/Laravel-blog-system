@@ -1,0 +1,50 @@
+
+body
+{
+
+}
+
+.navbar
+{
+	background-color: #00BFFF;
+}
+
+.nav-link
+{
+	text-decoration: underline;
+	color: white;
+	font-weight: bold;
+}
+
+.navbar-toggler-icon {
+	background-color: #00BFFF;
+}
+
+a:visited
+{
+	text-decoration: none;
+}
+
+.input[type=search]
+{	
+	width: 130px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+.btn-outline-primary
+{
+	color: white;
+	background-color: white;
+}
+
+.dropdown-menu
+{
+	background-color: #00BFFF;
+}
+
+.dropdown-item
+{
+	color: white;
+	font-weight: bold;
+}
