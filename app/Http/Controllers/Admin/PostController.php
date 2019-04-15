@@ -20,9 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::all()->sortKeysDesc();
+        $post = Post::latest()->paginate(8);
         $post_count = Post::count();
-        return $post;
         return view('admin/post/index', compact('post', 'post_count'));
     }
 
@@ -128,8 +127,15 @@ class PostController extends Controller
     {   
         $post = Post::find($id);
         $tag = Tag::all()->sortKeysDesc();
+
+        $compare_tag = Tag::all();
+        foreach ($compare_tag as  $compare_tag) {
+            $compare_tag = $compare_tag->id;
+        }
+
         $category = Category::all()->sortKeysDesc();
-        return view('admin/post/edit', compact('tag', 'category', 'post'));
+
+        return view('admin/post/edit', compact('tag', 'category', 'post', 'compare_tag'));
     }
 
     /**
@@ -140,7 +146,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
         $post = Post::find($id);
 
          $this->validate($request,[
@@ -153,6 +159,11 @@ class PostController extends Controller
 
         $image = $request->file('image');
 
+        $slug = str_slug($request->title);
+        $shorten_slug = substr($slug, 0, 15);
+        $slug = $shorten_slug; 
+        $slug = str_replace(" ", "-", $slug); 
+
 
         if(isset($image))
         {
@@ -164,15 +175,22 @@ class PostController extends Controller
             Storage::disk('public')->makeDirectory('post');
         }
 
+         //delete old post image
+            if(Storage::disk('public')->exists('post/'.$post->image))
+            {
+                Storage::disk('public')->delete('post/'.$post->image);
+            }
+
         $post_image = Image::make($image)->resize(400,300);
         Storage::disk('public')->put('post/'.$image_name,$post_image);
 
-        $post = new Post();
         $post->user_id = Auth::id();
         $post->category_id = $request->category_id;
         $post->title = $request->title;
         $post->image = $image_name;
         $post->description = $request->description;
+        $post->category_id = $request->category_id;
+
         if(isset($request->status))
         {
             $post->status = true;
@@ -189,12 +207,13 @@ class PostController extends Controller
             //This will be scheduled to run daily or so.
         } */
 
-        $user->categories()->associate($request->category_id);
-
         $post->save();
 
-        $post->tags()->attach($request->tags);
-
+        if (isset($request->tags)) {
+            $post->tags()->sync($request->tags);
+        } else {
+            $post->tags()->sync([]);
+        }
 
         $request->session()->flash('success', 'Task was successful!');
         return redirect()->route('post.index');
@@ -207,7 +226,19 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $post = Post::find($id);
+        
+        if (Storage::disk('public')->exists('post/'.$post->image))
+        {
+            Storage::disk('public')->delete('post/'.$post->image);
+        }
+
+        $post->tags()->detach();
+        $post->delete();
+        
+        session()->flash('status', 'Task was successful!');
+        return redirect()->back();
     }
+    
 }

@@ -50,7 +50,7 @@ body
 
 .card
 {
-	background-color:  #00BFFF;
+	background-color:  #182334;
 	color: white;
 	text-align: center;
 }
@@ -80,6 +80,7 @@ section, .card
   input[type=search]
   {
   	width: 100px;
+
   }
 
    .search_control
@@ -102,11 +103,25 @@ section, .card
 
 .form-control:focus
 {
+	color: black;
+	background-color: white;
+}
+
+.form-control
+{
 	color: white;
 	background-color: #2F4F4F;
 }
 
+
+
 .btn-link
 {
+	color: white;
+}
+
+.selected
+{
+	background-color: black;
 	color: white;
 }

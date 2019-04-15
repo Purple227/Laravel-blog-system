@@ -56,7 +56,6 @@ Add post
 <label for="category"> Category </label>
 <div class="form-line {{ $errors->has('category') ? 'focused error' : '' }}">
 <select class="custom-select form-control" name="category_id" required>
-  <option disabled> Tap here to select category</option>
   @foreach($category as $categories)
   <option value="{{ $categories->id }}">{{$categories->name }} <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
 </select>

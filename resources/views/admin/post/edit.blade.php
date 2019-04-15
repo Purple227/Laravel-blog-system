@@ -56,13 +56,10 @@
 <label for="category"> Category </label>
 <div class="form-line {{ $errors->has('category') ? 'focused error' : '' }}">
 <select class="custom-select form-control" name="category_id" required>
-  <option disabled> Tap here to select category</option>
   @foreach($category as $categories)
-  <option value="{{ $categories->id }}" {{ $model->category_id == $categories->id ? 'selected' : '' }}>  <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
+  <option value="{{ $categories->id }}" {{old('category_id', $post->category_id) == $categories->id ? 'selected' : ''}} >{{$categories->name }} <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
 </select>
 </div>
-
- <option value="$category->id" {{ $model->category_id == $category->id ? 'selected' : '' }}>
 
 
 <div class="form-group mt-2">
@@ -74,7 +71,7 @@
 <select class="custom-select form-control" name="tags[]"  size="3" multiple required>
   <option disabled> Morethan one can be selected</option>
   @foreach($tag as $tags)
-  <option value="{{ $tags->id }}"> {{$tags->name}} <span class="badge badge-primary"  data-placement="left" title="No. of post"> {{$tags->posts->count()}} </span></option> @endforeach
+  <option value="{{ $tags->id }}" {{old('tags[]', $compare_tag) == $tags->id ? 'selected' : '' }}>  {{$tags->name}} <span class="badge badge-primary"  data-placement="left" title="No. of post"> {{$tags->posts->count()}} </span></option> @endforeach
   
 </select>
 </div>
@@ -83,10 +80,10 @@
 
 <div class="form-group"> 
 <label for="body" class=" "> description </label> 
-<textarea class="form-control blur {{ $errors->has('body') ? ' is-invalid' : '' }} " id="body" rows="2" name="body" value="{{ old('body') }}" > {{ $post->body }} </textarea>
-@if ($errors->has('body'))
+<textarea class="form-control blur {{ $errors->has('description') ? ' is-invalid' : '' }} " id="body" rows="2" name="description" value="{{ old('description') }}" > {{ $post->description }} </textarea>
+@if ($errors->has('description'))
 <span class="invalid-feedback" role="alert">
-<strong>{{ $errors->first('body') }}</strong>
+<strong>{{ $errors->first('description') }}</strong>
 </span>
 @endif
 </div>
