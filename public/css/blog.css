@@ -11,18 +11,17 @@ body
 
 .nav-link
 {
-	text-decoration: underline;
 	color: white;
 	font-weight: bold;
 }
 
-.navbar-toggler-icon {
-	background-color: #00BFFF;
+.active
+{
+	text-decoration: underline;
 }
 
-a:visited
-{
-	text-decoration: none;
+.navbar-toggler-icon {
+	background-color: #00BFFF;
 }
 
 .input[type=search]
@@ -47,4 +46,67 @@ a:visited
 {
 	color: white;
 	font-weight: bold;
+}
+
+.card
+{
+	background-color:  #00BFFF;
+	color: white;
+	text-align: center;
+}
+
+label, .card-header
+{
+	font-weight: bold;
+}
+
+section, .card
+{
+	padding: 30px;
+}
+
+
+@media only screen and (max-width: 600px) 
+{
+  .card {
+    margin-top: 13px;
+  }
+
+  section
+  {
+  	margin-top: 8px;
+  }
+
+  input[type=search]
+  {
+  	width: 100px;
+  }
+
+   .search_control
+  {
+  	width: 100px;
+  }
+
+
+}/* Max width close here */
+
+.navbar_search_space
+{
+	margin-right: 10px;
+}
+
+.form-control-file
+{
+	border: 15px solid white;
+}
+
+.form-control:focus
+{
+	color: white;
+	background-color: #2F4F4F;
+}
+
+.btn-link
+{
+	color: white;
 }

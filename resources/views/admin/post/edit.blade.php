@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('title')
-Add post
+{{ $post->title }}
 @endsection
 
 @section('content')
@@ -22,9 +22,9 @@ Add post
 
 <div class="card-body "> <!-- Card-body open -->
 
-<form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data" >
-
-@csrf
+<form action="{{ route('post.update',$post->id) }}" method="POST" enctype="multipart/form-data">
+  @method('PATCH')
+ @csrf
 
 <div class="form-group"> 
 <label for="image" class=" ">Enter image</label>
@@ -38,7 +38,7 @@ Add post
 <div class="form-group">
 <label for="title" class=" ">Title</label>
 
-<input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" placeholder="Enter title" value="{{ old('title') }}" required>
+<input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" placeholder="Enter title" value="{{ $post->title }}" required>
 
 @if ($errors->has('title'))
 <span class="invalid-feedback" role="alert">
@@ -58,9 +58,11 @@ Add post
 <select class="custom-select form-control" name="category_id" required>
   <option disabled> Tap here to select category</option>
   @foreach($category as $categories)
-  <option value="{{ $categories->id }}">{{$categories->name }} <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
+  <option value="{{ $categories->id }}" {{ $model->category_id == $categories->id ? 'selected' : '' }}>  <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
 </select>
 </div>
+
+ <option value="$category->id" {{ $model->category_id == $category->id ? 'selected' : '' }}>
 
 
 <div class="form-group mt-2">
@@ -80,11 +82,11 @@ Add post
 
 
 <div class="form-group"> 
-<label for="description" class=" "> description </label> 
-<textarea class="form-control blur {{ $errors->has('description') ? ' is-invalid' : '' }} " id="description" rows="2" name="description" value="{{ old('description') }}" >  </textarea>
-@if ($errors->has('description'))
+<label for="body" class=" "> description </label> 
+<textarea class="form-control blur {{ $errors->has('body') ? ' is-invalid' : '' }} " id="body" rows="2" name="body" value="{{ old('body') }}" > {{ $post->body }} </textarea>
+@if ($errors->has('body'))
 <span class="invalid-feedback" role="alert">
-<strong>{{ $errors->first('description') }}</strong>
+<strong>{{ $errors->first('body') }}</strong>
 </span>
 @endif
 </div>

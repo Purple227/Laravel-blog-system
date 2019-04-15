@@ -19,13 +19,17 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('image')->default('default.png');
-            $table->text('body');
-            $table->integer('view_count')->default(600);
+            $table->text('description');
+            $table->integer('view_count')->default(0);
             $table->boolean('status')->default(false);
             $table->boolean('is_approved')->default(false);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
                   ->references('id')->on('users')
+                  ->onDelete('cascade');
+            $table->unsignedInteger('category_id');
+            $table->foreign('category_id')
+                  ->references('id')->on('categories')
                   ->onDelete('cascade');
 
             $table->timestamps();
