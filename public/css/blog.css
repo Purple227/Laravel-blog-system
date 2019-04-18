@@ -88,6 +88,11 @@ section, .card
   	width: 100px;
   }
 
+  .card-img-top
+  {
+  	height: 25%;
+  }
+
 
 }/* Max width close here */
 
@@ -103,8 +108,8 @@ section, .card
 
 .form-control:focus
 {
-	color: black;
-	background-color: white;
+	color: white;
+	background-color: black;
 }
 
 .form-control
@@ -120,8 +125,16 @@ section, .card
 	color: white;
 }
 
+option
+{
+	background-color:  #00BFFF;
+	color: white;
+	font-weight: bold;
+}
+
 .selected
 {
-	background-color: black;
+	background-color:  black;
 	color: white;
+	font-weight: bold;
 }

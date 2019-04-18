@@ -51,6 +51,7 @@ class PostController extends Controller
             'category_id' => 'required',
             'tags' => 'required',
             'description' => 'required',
+            'slug' => 'unique:posts,slug'
         ]); 
 
         $image = $request->file('image');
@@ -70,7 +71,7 @@ class PostController extends Controller
             Storage::disk('public')->makeDirectory('post');
         }
 
-        $post_image = Image::make($image)->resize(400,300);
+        $post_image = Image::make($image)->resize(600,350)->stream();
         Storage::disk('public')->put('post/'.$image_name,$post_image);
 
         $post = new Post();
@@ -80,6 +81,7 @@ class PostController extends Controller
         $post->slug = $slug;
         $post->image = $image_name;
         $post->description = $request->description;
+
         if(isset($request->status))
         {
             $post->status = true;
@@ -95,9 +97,18 @@ class PostController extends Controller
             $post->view_count = 680;
             //This will be scheduled to run daily or so.
         } */
+       
+
+       $slug_check = Post::where('slug', $post->slug)->first();
+       if ($slug_check == true) {
+        session()->flash('fail', 'Please suffix your title!');
+        return redirect()->back();
+       }
+       
 
         $post->save();
 
+       
         $post->tags()->attach($request->tags);
 
 
@@ -114,7 +125,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('admin/post.show', compact('post'));
     }
 
     /**
@@ -128,11 +140,11 @@ class PostController extends Controller
         $post = Post::find($id);
         $tag = Tag::all()->sortKeysDesc();
 
-        $compare_tag = Tag::all();
-        foreach ($compare_tag as  $compare_tag) {
+        $compare_tag = Tag::all()->sortKeysDesc();
+        foreach ($compare_tag as $compare_tag) {
             $compare_tag = $compare_tag->id;
         }
-
+        
         $category = Category::all()->sortKeysDesc();
 
         return view('admin/post/edit', compact('tag', 'category', 'post', 'compare_tag'));
@@ -181,7 +193,7 @@ class PostController extends Controller
                 Storage::disk('public')->delete('post/'.$post->image);
             }
 
-        $post_image = Image::make($image)->resize(400,300);
+        $post_image = Image::make($image)->resize(600,350)->stream();
         Storage::disk('public')->put('post/'.$image_name,$post_image);
 
         $post->user_id = Auth::id();
@@ -207,6 +219,15 @@ class PostController extends Controller
             //This will be scheduled to run daily or so.
         } */
 
+
+      /* Notify subscribers
+         $subscribers = Subscriber::all();
+        foreach ($subscribers as $subscriber)
+        {
+            Notification::route('mail',$subscriber->email)
+                ->notify(new NewPostNotify($post));
+        } */ 
+
         $post->save();
 
         if (isset($request->tags)) {
@@ -219,6 +240,12 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
+    public function pending()
+    {
+       $pending = $Post::where('is_approved', false)->get();
+       return view('admin/post/pending', compact('pending'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -228,7 +255,7 @@ class PostController extends Controller
     public function destroy($id)
     {   
         $post = Post::find($id);
-        
+
         if (Storage::disk('public')->exists('post/'.$post->image))
         {
             Storage::disk('public')->delete('post/'.$post->image);
@@ -240,5 +267,5 @@ class PostController extends Controller
         session()->flash('status', 'Task was successful!');
         return redirect()->back();
     }
-    
+
 }

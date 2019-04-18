@@ -57,7 +57,7 @@
 <div class="form-line {{ $errors->has('category') ? 'focused error' : '' }}">
 <select class="custom-select form-control" name="category_id" required>
   @foreach($category as $categories)
-  <option value="{{ $categories->id }}" {{old('category_id', $post->category_id) == $categories->id ? 'selected' : ''}} >{{$categories->name }} <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
+  <option value="{{ $categories->id }}" class="{{old('category_id', $post->category_id) == $categories->id ? 'selected' : ''}}" >{{$categories->name }} <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
 </select>
 </div>
 
@@ -69,9 +69,9 @@
 <label for="tag"> Tag </label>
 <div class="form-line {{ $errors->has('tags') ? 'focused error' : '' }}">
 <select class="custom-select form-control" name="tags[]"  size="3" multiple required>
-  <option disabled> Morethan one can be selected</option>
+  <option disabled> Morethan one can be selected</option> 
   @foreach($tag as $tags)
-  <option value="{{ $tags->id }}" {{old('tags[]', $compare_tag) == $tags->id ? 'selected' : '' }}>  {{$tags->name}} <span class="badge badge-primary"  data-placement="left" title="No. of post"> {{$tags->posts->count()}} </span></option> @endforeach
+  <option value="{{ $tags->id }}" class="{{old('tags[]', $tags->id) == $compare_tag ? 'selected' : '' }}">  {{$tags->name}} <span class="badge badge-primary"  data-placement="left" title="No. of post"> {{$tags->posts->count()}} </span></option> @endforeach
   
 </select>
 </div>

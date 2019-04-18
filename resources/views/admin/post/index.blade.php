@@ -1,7 +1,7 @@
-@extends('layouts.frontend.app')
+@extends('layouts.backend.app')
 
 @section('title')
-{{ config('app.name') }}
+Post table
 @endsection
 
 @section('content')

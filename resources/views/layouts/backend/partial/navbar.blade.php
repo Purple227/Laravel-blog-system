@@ -25,25 +25,37 @@
 
 
  <ul class="navbar-nav ">
+
      <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle {{ url()->current() ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle " href=" " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Blog
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ route('post.create') }} ">Create post</a>
-          <a class="dropdown-item" href="{{ route('post.index') }} "> Post table</a>
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('post.create') }} ">Create post</a>
+
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('post.index') }} "> Post table</a>
       </li>
+
+       <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href=" " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Tag
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('tag.index') }} ">Add/Create tag</a>
+      </li>
+
+       <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href=" " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('category.index') }} ">Add/Create category</a>
+      </li>
+
   </ul>
 
     
   </div>
-
-   
-
-
-
-
-
 
    
 </nav>
