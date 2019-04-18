@@ -62,7 +62,9 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $tag = Tag::find($id);
+        $post = $tag->posts()->paginate(6);
+        return view('admin/tag/show', compact('tag', 'post'));
     }
 
     /**
@@ -73,7 +75,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-         $tag = Tag::find($id);
+        $tag = Tag::find($id);
         return view('admin/tag.edit', compact('tag'));
     }
 

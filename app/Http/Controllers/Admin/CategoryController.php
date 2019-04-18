@@ -62,7 +62,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        $post = $category->posts();
+        return view('admin/category/show', compact('category', 'post'));
     }
 
     /**

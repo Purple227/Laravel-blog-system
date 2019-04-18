@@ -99,8 +99,6 @@ Dropdown
 </button>
 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 
-<a class="dropdown-item" href=" {{ route('tag.show', $tags->id) }}"> View</a>
-
 <a class="dropdown-item" href="{{ route('tag.edit',$tags->id) }}">Edit</a>
 
 <form action=" {{ route('tag.destroy',$tags->id) }}" method="POST" class="dropdown-item" >

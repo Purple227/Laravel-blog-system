@@ -19,12 +19,13 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['namespace'=>'Admin', 'middleware'=>['auth','admin']], function()
 {
 	Route::resource('admin/post', 'PostController');
-	Route::get('admin/pending', 'PostController@pending')->name('post.pending');
+	Route::get('admin/post/pending', 'PostController@pending')->name('post.pending');
+	Route::put('admin/post/{id}/approve','PostController@approval')->name('post.approve');
 
 	Route::get('admin/dashboard', 'DashboardController@dashboard')->name('dashboard');
 
-	Route::resource('admin/category', 'CategoryController')->except('create');
-	Route::resource('admin/tag', 'TagController')->except('create');
+	Route::resource('admin/category', 'CategoryController')->except('create','show');
+	Route::resource('admin/tag', 'TagController')->except('create','show');
 });
 
 

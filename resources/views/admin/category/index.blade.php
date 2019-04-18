@@ -99,7 +99,6 @@ Dropdown
 </button>
 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 
-<a class="dropdown-item" href=" {{ route('category.show', $categories->id) }}"> View</a>
 
 <a class="dropdown-item" href="{{ route('category.edit',$categories->id) }}">Edit</a>
 

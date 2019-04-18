@@ -11,7 +11,7 @@ Post table
 @include('layouts.backend.partial.error')
 
   <a class="btn btn-primary btn-sm" href="{{ route('post.create') }}">
-      <span>Add New Work</span>
+      <span>Add New Post</span>
   </a>
 
   <div class="card"> <!-- Card body start -->

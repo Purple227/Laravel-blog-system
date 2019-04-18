@@ -25,6 +25,13 @@ class PostController extends Controller
         return view('admin/post/index', compact('post', 'post_count'));
     }
 
+    
+    public function pending()
+    {
+       $post = $Post::where('is_approved', false)->get();
+       return view('admin/post/pending', compact('post'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -240,10 +247,27 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    public function pending()
+
+     public function approval($id)
     {
-       $pending = $Post::where('is_approved', false)->get();
-       return view('admin/post/pending', compact('pending'));
+        $post = Post::find($id);
+        if ($post->is_approved == false)
+        {
+            $post->is_approved = true;
+            $post->save();
+            /*
+            $post->user->notify(new AuthorPostApproved($post));
+
+            $subscribers = Subscriber::all();
+            foreach ($subscribers as $subscriber)
+            {
+                Notification::route('mail',$subscriber->email)
+                    ->notify(new NewPostNotify($post));
+            } */
+
+        $request->session()->flash('success', 'Post approved succesful!');
+        return redirect()->back();
+        } 
     }
 
     /**
