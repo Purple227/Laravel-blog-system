@@ -8,8 +8,44 @@
 
 <section class=" ">
 
+<a class="btn btn-sm btn-primary" href="{{ route('post.index') }}"> Back </a> 
+
+@if($post->is_approved == false)
+<form method="post" action="{{ route('post.approve',$post->id) }}" id="approval-form">
+@csrf
+@method('PUT')
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+ <div class="btn-group " role="group" aria-label="Third group">
+ <input class="btn btn-primary btn-sm" type="submit" value="Approved post">
+</div>
+</form>
+@else
+
+<div class="btn-group" role="group" aria-label="Third group">
+ <button class="btn btn-primary btn-sm" type="button" disabled> Post approved
+</div>
+</div>
+@endif
+
+
+<div class="dropdown d-inline float-right">
+  <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Menu
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+   <a class="dropdown-item" href=" {{ route('post.edit',$post->id) }}"> Edit </a>
+   
+  </div>
+</div>
+
+
+
+
+
 	<div class="card">
-	 <img class="" style="height: 25%;" src="{{asset('Storage/post/'.$post->image) }}" alt="Card image cap" >
+    <div class="card-header"> <a href="{{ url("/post/{$post->slug}") }}" class="lead"> Post link for share </a>
+    </div> 
+	 <img class=""  src="{{asset('Storage/post/'.$post->image) }}" alt="Card image cap" >
   <div class="card-header lead" >
     {{ $post->title}}
   </div>

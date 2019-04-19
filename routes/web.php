@@ -17,9 +17,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::group(['namespace'=>'Admin', 'middleware'=>['auth','admin']], function()
-{
-	Route::resource('admin/post', 'PostController');
+{	
 	Route::get('admin/post/pending', 'PostController@pending')->name('post.pending');
+	Route::resource('admin/post', 'PostController');
 	Route::put('admin/post/{id}/approve','PostController@approval')->name('post.approve');
 
 	Route::get('admin/dashboard', 'DashboardController@dashboard')->name('dashboard');

@@ -10,21 +10,21 @@ Post pending table
 
 @include('layouts.backend.partial.error')
 
-  <a class="btn btn-primary btn-sm" href="{{ route('post.create') }}">
-      <span>Add New Post</span>
+  <a class="btn btn-primary btn-sm" href="{{ route('dashboard') }}">
+      <span>back</span>
   </a>
 
   <div class="card"> <!-- Card body start -->
 
     <div class="card-head">
       <button type="button" class="btn btn-primary"> 
-@if($post_count == 0 || $post_count == 1)
-  Post
+@if($post->count() == 0 || $post->count() == 1)
+  Pending post
 @else
-  Posts
+  Pending posts
 @endif 
 
-   <span class="badge badge-primary"> {{ $post_count }} </span>
+   <span class="badge badge-primary"> {{ $post->count() }} </span>
 </button>
     </div>
 
@@ -34,7 +34,6 @@ Post pending table
       <th scope="col">#</th>
       <th scope="col">title</th>
       <th scope="col">author</th>
-      <th scope="col">view</th>
       <th scope="col">is_approved</th>
       <th scope="col">status</th>
       <th scope="col">created At</th>
@@ -47,7 +46,6 @@ Post pending table
       <th scope="row">{{ $key + 1 }}</th>
       <td>{{ str_limit($posts->title, 18) }}</td>
       <td>{{ str_limit($posts->user->name, 8) }}</td>
-      <td>{{ $posts->view_count }}</td>
       <td>
       @if($posts->is_approved == true)
       <span class="badge bg-primary">Approved</span>
@@ -72,15 +70,28 @@ Post pending table
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <a class="dropdown-item" href="{{route('post.show',$posts->id) }}"> View</a>
-      <a class="dropdown-item" href=" {{ route('post.edit',$posts->id) }}"> Edit </a>
-       <form action=" {{ route('post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
-       @csrf
-       @method('DELETE')
-        <button class="btn btn-primary" type="submit"> Delete </button>
-       </form>
-    </tr>
+  
 
-    @endforeach
+
+@if($posts->is_approved == false)
+
+<form method="post" action="{{ route('post.approve',$posts->id) }}" id="approval-form" class="dropdown-item">
+@csrf
+@method('PUT')
+<input class="btn btn-primary btn-sm" type="submit" value="Approved">
+</form>
+@endif
+
+
+
+<form action=" {{ route('post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
+@csrf
+@method('DELETE')
+<button class="btn btn-primary" type="submit"> Delete </button>
+</form>
+</tr>
+
+@endforeach
    
   </tbody>
 </table>

@@ -25,10 +25,9 @@ class PostController extends Controller
         return view('admin/post/index', compact('post', 'post_count'));
     }
 
-    
     public function pending()
     {
-       $post = $Post::where('is_approved', false)->get();
+       $post = Post::where('is_approved', false)->paginate(8);
        return view('admin/post/pending', compact('post'));
     }
 
@@ -265,7 +264,7 @@ class PostController extends Controller
                     ->notify(new NewPostNotify($post));
             } */
 
-        $request->session()->flash('success', 'Post approved succesful!');
+        session()->flash('success', 'Post approved succesful!');
         return redirect()->back();
         } 
     }
@@ -291,5 +290,6 @@ class PostController extends Controller
         session()->flash('status', 'Task was successful!');
         return redirect()->back();
     }
+    
 
 }
