@@ -9,13 +9,7 @@
 <section class=" ">
 
 @if($post->is_approved == false)
-<form method="post" action="{{ route('post.approve',$post->id) }}" id="approval-form" class="d-inline">
-@csrf
-@method('PUT')
- <input class="btn btn-primary btn-sm" type="submit" value="Approved post">
-</form>
-@else
-<button type="button" class="btn btn-primary">Post approved</button>
+<button type="button" class="btn btn-danger btn-sm" disabled>Not approved</button>
 @endif
 
 <div class="dropdown d-inline">
@@ -29,10 +23,10 @@ menu
 <a class="btn btn-sm btn-primary float-right" href="{{ route('post.index') }}"> Back </a> 
 
 
-	<div class="card">
-    <div class="card-header"> <a href="{{ url("/post/{$post->slug}") }}" class="lead"> Post link for share </a>
+  <div class="card d-block">
+    <div class="card-header"> <a href="{{ url("/post/{$post->slug}") }}" class="card-link lead"> Post link for share </a>
     </div> 
-	 <img class=""  src="{{asset('Storage/post/'.$post->image) }}" alt="Card image cap" >
+   <img class=""  src="{{asset('Storage/post/'.$post->image) }}" alt="Card image cap" >
   <div class="card-header lead" >
     {{ $post->title}}
   </div>
@@ -67,10 +61,11 @@ menu
     <a href="#" class="card-link btn btn-primary btn-sm"> {{$tag->name}} </a>
     @endforeach
   </div>
-  <div class="card-foote">
+  <div class="card-footer">
    {{ $post->updated_at->diffForHumans()}}
   </div>
 </div>
+
 
 
 </section>

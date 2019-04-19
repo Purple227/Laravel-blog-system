@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Tag_Category;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
+use App\Tag;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,21 +14,12 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $category = Category::latest()->paginate(5);
-        $category_count = Category::count();
-        return view('admin/category.index', compact('category', 'category_count'));
+    {
+        $tag = Tag::latest()->paginate(5);
+        $tag_count = Tag::count();
+        return view('tag_category/tag/index', compact('tag', 'tag_count'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,19 +30,19 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|unique:categories'
+            'name' => 'required|unique:tags'
         ]);
          // Use tag name as slug
         $slug = str_slug($request->name);
 
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = $slug;
+        $tag = new Tag();
+        $tag->name = $request->name;
+        $tag->slug = $slug;
     
-        $category->save();
+        $tag->save();
 
         $request->session()->flash('success', 'Task was successful!');
-        return redirect()->route('category.index');
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -62,9 +53,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
-        $post = $category->posts();
-        return view('admin/category/show', compact('category', 'post'));
+        $tag = Tag::find($id);
+        $post = $tag->posts()->paginate(6);
+        return view('tag_category/tag/show', compact('tag', 'post'));
     }
 
     /**
@@ -75,8 +66,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin/category/edit', compact('category'));
+        $tag = Tag::find($id);
+        return view('tag_category/tag.edit', compact('tag'));
     }
 
     /**
@@ -87,21 +78,23 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {    
-         $category = Category::find($id);
-         $this->validate($request,[
-            'name' => 'required|unique:categories'
+    {
+        $tag = Tag::find($id);
+
+        $this->validate($request,[
+            'name' => 'required|unique:tags'
         ]);
+
          // Use tag name as slug
         $slug = str_slug($request->name);
 
-        $category->name = $request->name;
-        $category->slug = $slug;
+        $tag->name = $request->name;
+        $tag->slug = $slug;
     
-        $category->save();
+        $tag->save();
 
         $request->session()->flash('success', 'Task was successful!');
-        return redirect()->route('category.index');
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -112,8 +105,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-         $category = Category::find($id);
-         $category->delete();
+        $tag = Tag::find($id);
+        $tag->posts()->detach();
+        $tag->delete();
         
         session()->flash('success', 'Task was successful!');
         return redirect()->back();
