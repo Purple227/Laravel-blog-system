@@ -19,16 +19,15 @@
 
 <ul class="navbar-nav mr-md-auto">
 
-<li class="nav-item">
-<a class="nav-link " href="{{route('post.pending')}}"> blah 1 </a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link " href="#">Blah 2</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link " href="#">Blah 3</a>
+ <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        	@foreach($categories as $category)
+          <a class="dropdown-item" href="{{ route('blog.category',$category->slug)}}">{{$category->name}}</a>
+ 			@endforeach
+        </div>
 </li>
 
 <li class="nav-item">
@@ -44,10 +43,9 @@
 
 </div>
 
-<form class="form-inline navbar_search_space">
-<input class="form-control" type="search" placeholder="Search" aria-label="Search">
-
-<button class="btn btn-outline-primary" type="submit"> <img src=" {{ asset('images/search.svg') }} "  width="20" height="20" alt=" search ">  </button>
+<form class="form-inline navbar_search_space" method="GET" action="{{ route('blog.search') }}" >
+<input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query"  value="{{ isset($query) ? $query : '' }}" required>
+<button class="btn btn-outline-primary " type="submit"> <img src=" {{ asset('images/search.svg') }} "  width="20" height="20" alt=" search ">  </button>
 </form> 
 
 
@@ -87,3 +85,10 @@ document.getElementById('logout-form').submit();">
 
 
 </nav>
+
+<div class="m-2">
+@include('layouts.frontend.partial.error')
+</div>
+
+
+

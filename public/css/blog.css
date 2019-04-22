@@ -4,7 +4,7 @@ body
 
 }
 
-.navbar
+.navbar, footer
 {
 	background-color: #00BFFF;
 }
@@ -60,7 +60,7 @@ label, .card-header
 	font-weight: bold;
 }
 
-section, .card
+section, .card, footer
 {
 	padding: 30px;
 }
@@ -112,7 +112,7 @@ section, .card
 	background-color: black;
 }
 
-.form-control
+.form-control, .form-control-sm
 {
 	color: white;
 	background-color: #2F4F4F;
@@ -137,4 +137,9 @@ option
 	background-color:  black;
 	color: white;
 	font-weight: bold;
+}
+
+footer a
+{
+	color: white;
 }
