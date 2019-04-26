@@ -1,4 +1,4 @@
-<div class="col">
+<div class="col-md-6 col-sm">
 
 <div class="card m-2">
   <img class="card-img-top" src="{{asset('Storage/post/'.$post->image) }}" alt="Card image cap">

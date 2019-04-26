@@ -248,7 +248,7 @@ class PostController extends Controller
 
 
      public function approval($id)
-    {
+        {
         $post = Post::find($id);
         if ($post->is_approved == false)
         {
@@ -287,7 +287,7 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
         
-        session()->flash('status', 'Task was successful!');
+        session()->flash('success', 'Task was successful!');
         return redirect()->back();
     }
     

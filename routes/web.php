@@ -15,11 +15,12 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('blog/search','BlogController@search')->name('blog.search');
+Route::get('blog/author/{name}', 'AuthorController@blogByAuthor')->name('blog.author');
+Route::get('blog/search','BlogController@blogBySearch')->name('blog.search');
 Route::get('blog', 'BlogController@blog')->name('blog');
 Route::get('blog/{slug}', 'BlogController@blogSingle')->name('blog.single');
-Route::get('blog/category/{slug}', 'BlogController@category')->name('blog.category');
-Route::get('blog/tag/{slug}', 'BlogController@tag')->name('blog.tag');
+Route::get('blog/category/{slug}', 'BlogController@blogByCategory')->name('blog.category');
+Route::get('blog/tag/{slug}', 'BlogController@blogByTag')->name('blog.tag');
 
 Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
 
@@ -30,19 +31,28 @@ Route::group(['namespace'=>'Admin', 'middleware'=>['auth','admin']], function()
 	Route::resource('admin/post', 'PostController');
 	Route::put('admin/post/{id}/approve','PostController@approval')->name('post.approve');
 
-	Route::get('admin/dashboard', 'DashboardController@dashboard')->name('dashboard');
+	Route::get('admin/dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
 
-    Route::get('subscriber', 'SubscriberController@index')->name('subscriber');
+    Route::get('admin/subscriber', 'SubscriberController@index')->name('subscriber');
     Route::delete('subscriber/{id}','SubscriberController@destroy')->name('subscriber.destroy');
+
+    Route::get('admin/user', 'UserController@authUser')->name('auth.user');
+    Route::get('admin/author', 'UserController@author')->name('author');
+    Route::get('admin/super-user', 'UserController@admin')->name('admin');
+    Route::put('author/{id}/author', 'UserController@updateToAuthor')->name('update.author');
+    Route::put('admin/{id}/admin', 'UserController@updateToAdmin')->name('update.admin');
+     Route::put('user/{id}/user', 'UserController@updateToUser')->name('update.user');
+    Route::delete('users/{id}/users','UserController@destroy')->name('user.destroy');
 });
 
 
 Route::group(['namespace'=>'Author', 'middleware'=>['auth','author']], function()
 {	
-	Route::get('author/post/pending', 'PostController@pending')->name('post.pending');
-	Route::resource('author/post', 'PostController');
+	Route::get('author/post/pending', 'PostController@pending')->name('author.post.pending');
+	Route::resource('author/post', 'PostController')->names([
+    'create' => 'author.post.create', 'index' => 'author.post.index', 'store' => 'author.post.store', 'destroy' => 'author.post.destroy', 'update' => 'author.post.update', 'show' => 'author.post.show', 'edit' => 'author.post.edit']);
 
-	Route::get('author/dashboard', 'DashboardController@dashboard')->name('dashboard');
+	Route::get('author/dashboard', 'DashboardController@dashboard')->name('author.dashboard');
 });
 
 
@@ -51,6 +61,12 @@ Route::group(['namespace'=>'Tag_Category', 'middleware'=>['auth']], function()
 {	
 	Route::resource('category', 'CategoryController')->except('create','show');
 	Route::resource('tag', 'TagController')->except('create','show');
+});
+
+Route::group(['middleware'=>['auth']], function (){
+  
+  Route::get('update-profile/{id}/edit', 'UserController@edit')->name('profile.edit');
+  Route::put('update-profile/{id}', 'UserController@updateProfile')->name('update.profile');
 });
 
 

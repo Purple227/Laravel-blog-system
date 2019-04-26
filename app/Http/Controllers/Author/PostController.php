@@ -110,7 +110,7 @@ class PostController extends Controller
 
 
         $request->session()->flash('success', 'Task was successful!');
-        return redirect()->route('post.index');
+        return redirect()->route('author.post.index');
 
     }
 
@@ -214,15 +214,6 @@ class PostController extends Controller
             //This will be scheduled to run daily or so.
         } */
 
-
-      /* Notify subscribers
-         $subscribers = Subscriber::all();
-        foreach ($subscribers as $subscriber)
-        {
-            Notification::route('mail',$subscriber->email)
-                ->notify(new NewPostNotify($post));
-        } */ 
-
         $post->save();
 
         if (isset($request->tags)) {
@@ -232,7 +223,7 @@ class PostController extends Controller
         }
 
         $request->session()->flash('success', 'Task was successful!');
-        return redirect()->route('post.index');
+        return redirect()->route('author.post.index');
     }
 
     /**
@@ -253,7 +244,7 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
         
-        session()->flash('status', 'Task was successful!');
+        session()->flash('success', 'Task was successful!');
         return redirect()->back();
     }
     

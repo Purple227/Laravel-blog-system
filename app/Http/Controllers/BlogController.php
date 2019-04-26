@@ -9,14 +9,12 @@ use App\Tag;
 use Illuminate\Support\Facades\Session;
 
 class BlogController extends Controller
-{
+{   
+   
+
     public function blog()
     {
-        $posts = Post::where([
-        ['status', '=', '1'],
-        ['is_approved', '=', '1'], 
-        ])
-        ->paginate(4);
+        $posts = Post::latest()->approved()->published()->paginate(4);
         return view('user_interface/blog', compact('posts'));
     }
 
@@ -30,45 +28,36 @@ class BlogController extends Controller
             Session::put($blogKey,1);
         }
 
-        return view('user_interface/blog_single', compact('post'));
+        $most_read = Post::all()->take(3);
+
+        return view('user_interface/blog_single', compact('post', 'most_read'));
     }
 
+     
 
-    public function category($slug)
+    public function blogByCategory($slug)
     {
         $category = Category::where('slug',$slug)->first();
-        $posts = $category->posts()->where([
-        ['status', '=', '1'],
-        ['is_approved', '=', '1'], 
-        ])
-        ->paginate(4);
+        $posts =  $category->posts()->approved()->published()->paginate(4);
 
         return view('user_interface/blog_categories', compact('category', 'posts'));
     }
 
-     public function tag($slug)
+     public function blogByTag($slug)
     {
         $tag = Category::where('slug',$slug)->first();
-        $posts = $tag->posts()->where([
-        ['status', '=', '1'],
-        ['is_approved', '=', '1'], 
-        ])
-        ->paginate(4);
+        $posts = $tag->posts()->approved()->published()->paginate(4);
 
         return view('user_interface/blog_tag', compact('tag', 'posts'));
     }
 
-      public function search(Request $request)
+      public function blogBySearch(Request $request)
     {   
         $query = $request->input('query');
         
-        $posts = Post::where([
-        ['title','LIKE',"%$query%"],
-        ['status', '=', '1'],
-        ['is_approved', '=', '1'], 
-        ])
-        ->paginate(4);
+        $posts = Post::where('title','LIKE',"%$query%")->approved()->published()->paginate(4);
 
         return view('user_interface/blog_search', compact('posts', 'query'));
     }
+
 }

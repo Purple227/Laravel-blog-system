@@ -19,8 +19,6 @@
 
     <ul class="navbar-nav mr-md-auto">
 
-     
-
     </ul>
 
 
@@ -31,9 +29,15 @@
           Blog
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @if(Auth::check() && Auth::user()->role_id == 1)
           <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('post.create') }} ">Create post</a>
 
           <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('post.index') }} "> Post table</a>
+          @else
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('author.post.create') }} ">Create post</a>
+
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('author.post.index') }} "> Post table</a>
+          @endif
       </li>
 
        <li class="nav-item dropdown ">
@@ -54,17 +58,27 @@
 
         <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle " href=" " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Others
+         Roles
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('subscriber') }} "> Subscribers </a>
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('auth.user') }} "> Users </a>
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('author') }} "> Authors </a>
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('author') }} "> Admin </a>
       </li>
 
+       <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle " href=" " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         {{ str_limit(Auth::user()->name, 7) }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('subscriber' ) }} "> subscribers </a>
+
+          <a class="dropdown-item {{ url()->current() ? 'active' : '' }}" href="{{ route('profile.edit',Auth::id() ) }} "> Update profile </a>
+      </li>
 
   </ul>
 
-    
   </div>
 
-   
 </nav>

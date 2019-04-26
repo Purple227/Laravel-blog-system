@@ -10,7 +10,7 @@ Post pending table
 
 @include('layouts.backend.partial.error')
 
-  <a class="btn btn-primary btn-sm" href="{{ route('dashboard') }}">
+  <a class="btn btn-primary btn-sm" href="{{ route('author.dashboard') }}">
       <span>back</span>
   </a>
 
@@ -69,11 +69,11 @@ Post pending table
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="{{route('post.show',$posts->id) }}"> View</a>
+      <a class="dropdown-item" href="{{route('author.post.show',$posts->id) }}"> View</a>
 
 
 
-<form action=" {{ route('post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
+<form action=" {{ route('author.post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
 <button class="btn btn-primary" type="submit"> Delete </button>

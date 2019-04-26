@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tag_Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -79,7 +80,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {    
-         $category = Category::find($id);
+
+       $category = Category::find($id);
          $this->validate($request,[
             'name' => 'required|unique:categories'
         ]);

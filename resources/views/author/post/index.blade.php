@@ -10,7 +10,7 @@ Post table
 
 @include('layouts.backend.partial.error')
 
-  <a class="btn btn-primary btn-sm" href="{{ route('post.create') }}">
+  <a class="btn btn-primary btn-sm" href="{{ route('author.post.create') }}">
       <span>Add New Post</span>
   </a>
 
@@ -71,9 +71,9 @@ Post table
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="{{route('post.show',$posts->id) }}"> View</a>
-      <a class="dropdown-item" href=" {{ route('post.edit',$posts->id) }}"> Edit </a>
-       <form action=" {{ route('post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
+      <a class="dropdown-item" href="{{route('author.post.show',$posts->id) }}"> View</a>
+      <a class="dropdown-item" href=" {{ route('author.post.edit',$posts->id) }}"> Edit </a>
+       <form action=" {{ route('author.post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
        @csrf
        @method('DELETE')
         <button class="btn btn-primary" type="submit"> Delete </button>

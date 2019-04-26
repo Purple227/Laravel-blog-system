@@ -79,6 +79,17 @@ document.getElementById('logout-form').submit();">
 @csrf
 </form>
 
+@if(Auth::user()->role_id == 1)
+<a class="dropdown-item" href=" {{ route('admin.dashboard') }} "> Dashboard </a>
+@endif
+
+@if(Auth::user()->role_id == 2)
+<a class="dropdown-item" href=" {{ route('author.dashboard') }} "> Dashboard </a>
+@endif
+
+
+
+
 </div>
 </div>
 @endauth

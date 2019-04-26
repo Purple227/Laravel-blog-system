@@ -6,6 +6,8 @@ Dashboard
 
 @section('content')
 
+@include('layouts.backend.partial.error')
+
 
 
 @endsection
