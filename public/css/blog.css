@@ -37,6 +37,11 @@ body
 	background-color: white;
 }
 
+.btn-primary
+{
+	background-color:  #00BFFF;
+}
+
 .dropdown-menu
 {
 	background-color: #00BFFF;

@@ -1,3 +1,5 @@
+<div class="m-2">
+
 @if ($errors->any())
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
 	<ul>
@@ -29,3 +31,5 @@
   </button>
 </div>
 @endif
+
+</div>

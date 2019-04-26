@@ -56,17 +56,15 @@ Route::group(['namespace'=>'Author', 'middleware'=>['auth','author']], function(
 });
 
 
-
-Route::group(['namespace'=>'Tag_Category', 'middleware'=>['auth']], function()
-{	
-	Route::resource('category', 'CategoryController')->except('create','show');
-	Route::resource('tag', 'TagController')->except('create','show');
-});
-
-Route::group(['middleware'=>['auth']], function (){
+Route::group(['namespace'=>'Auth', 'middleware'=>['auth']], function(){
   
   Route::get('update-profile/{id}/edit', 'UserController@edit')->name('profile.edit');
   Route::put('update-profile/{id}', 'UserController@updateProfile')->name('update.profile');
+
+  Route::post('comment/{id}','CommentController@storeComment')->name('comment.store');
+
+    Route::resource('category', 'CategoryController')->except('create','show');
+    Route::resource('tag', 'TagController')->except('create','show');
 });
 
 

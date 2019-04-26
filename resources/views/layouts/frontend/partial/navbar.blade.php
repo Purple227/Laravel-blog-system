@@ -97,9 +97,9 @@ document.getElementById('logout-form').submit();">
 
 </nav>
 
-<div class="m-2">
+
 @include('layouts.frontend.partial.error')
-</div>
+
 
 
 
