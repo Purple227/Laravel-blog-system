@@ -1,6 +1,6 @@
 <div class="col-md-6 col-sm">
 
-<div class="card m-2">
+<div class="card">
   <img class="card-img-top" src="{{asset('Storage/post/'.$post->image) }}" alt="Card image cap">
   <div class="card-header"> {{ str_limit($post->title, 20) }} </div>
   <div class="card-body">

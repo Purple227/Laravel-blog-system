@@ -127,7 +127,7 @@
 </button>
 
  <button type="button" class="btn btn-outline-primary btn-sm">
-    <img src=" {{ asset('images/view.svg') }} "  width="20" height="20" alt="Views">  <span class="badge badge-primary"> {{$post->view_count}} </span>
+    <img src=" {{ asset('images/view.svg') }} "  width="20" height="20" alt="Views">  <span class="badge badge-primary"> {{$most_read->view_count}} </span>
   <span class="sr-only">Views</span>
 </button>
   </div>

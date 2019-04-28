@@ -8,10 +8,17 @@ use Session;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 
 class UserController extends Controller
 {	
+
+    public function userProfile($id)
+    {
+        $user = User::find($id);
+        return view('auth/show_profile', compact('user'));
+    }
 
 	public function edit($id)
 	{

@@ -72,7 +72,7 @@ Users
 <form method="post" action="{{ route('update.admin',$users->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-primary btn-sm" type="submit" value="Make user">
+<input class="btn btn-primary btn-sm" type="submit" value="Make admin">
 </form>
 
 <form action=" {{ route('user.destroy',$users->id) }}" method="POST" class="dropdown-item" >

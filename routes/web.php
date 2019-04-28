@@ -58,8 +58,9 @@ Route::group(['namespace'=>'Author', 'middleware'=>['auth','author']], function(
 
 Route::group(['namespace'=>'Auth', 'middleware'=>['auth']], function(){
   
-  Route::get('update-profile/{id}/edit', 'UserController@edit')->name('profile.edit');
+  Route::get('user/{id}/edit', 'UserController@edit')->name('profile.edit');
   Route::put('update-profile/{id}', 'UserController@updateProfile')->name('update.profile');
+  Route::get('user/{id}', 'UserController@userProfile')->name('user.profile');
 
   Route::post('comment/{id}','CommentController@storeComment')->name('comment.store');
 
@@ -85,7 +86,7 @@ View::composer('layouts.frontend.partial.navbar', function ($view) {
 
 
 //Views Composer 
-View::composer('layouts.frontend.partial.footer', function ($view) {
+View::composer(['layouts.frontend.partial.footer','layouts.backend.partial.footer'], function ($view) {
     $categories = App\Category::all();
 
     if (count($categories) <= 6) {

@@ -10,7 +10,7 @@ Post pending table
 
 @include('layouts.backend.partial.error')
 
-  <a class="btn btn-primary btn-sm" href="{{ route('dashboard') }}">
+  <a class="btn btn-primary btn-sm" href="{{ route('admin.dashboard') }}">
       <span>back</span>
   </a>
 

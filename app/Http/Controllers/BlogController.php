@@ -28,7 +28,7 @@ class BlogController extends Controller
             Session::put($blogKey,1);
         }
 
-        $most_read = Post::all()->take(3);
+        $most_read = Post::orderBy('view_count', 'desc')->approved()->published()->take(3)->get();
 
         return view('user_interface/blog_single', compact('post', 'most_read'));
     }
