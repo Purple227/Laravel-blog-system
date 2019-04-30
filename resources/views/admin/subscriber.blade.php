@@ -12,19 +12,19 @@ Subscribers
 
   <div class="card"> <!-- Card body start -->
 
-    <div class="card-head">
-      <button type="button" class="btn btn-primary"> 
+    <div class="card-header">
+      <button type="button" class="btn btn-success"> 
 @if($subscribers->count() == 0 || $subscribers->count() == 1)
   Subscriber
 @else
   Subscribers
 @endif 
 
-   <span class="badge badge-primary"> {{ $subscribers->count() }} </span>
+   <span class="badge badge-success"> {{ $subscribers->count() }} </span>
 </button>
     </div>
 
-	<table class="table table-bordered text-white">
+	<table class="table table-bordered ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -43,14 +43,14 @@ Subscribers
       <!-- Dropdown menu for crud action -->
       <td>
         <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
        <form action=" {{ route('subscriber.destroy',$subscriber->id) }}" method="POST" class="dropdown-item" >
        @csrf
        @method('DELETE')
-        <button class="btn btn-primary" type="submit"> Delete </button>
+        <button class="btn btn-success" type="submit"> Delete </button>
        </form>
     </tr>
 

@@ -11,7 +11,7 @@
 
 @include('layouts.backend.partial.error')
 
-<a class="btn btn-primary btn-sm " href="{{ route('author.post.index') }}">
+<a class="btn btn-success btn-sm " href="{{ route('author.post.index') }}">
 <span>back</span>
 </a>
 
@@ -28,7 +28,7 @@
 
 @include('reuse_form.reuse_edit')
 
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-success">Submit</button>
 
 </form>
 

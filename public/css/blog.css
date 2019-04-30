@@ -6,18 +6,13 @@ body
 
 .navbar, footer
 {
-	background-color: #00BFFF;
+	background-color: #006400;
 }
 
 .nav-link
 {
 	color: white;
 	font-weight: bold;
-}
-
-.active
-{
-	text-decoration: underline;
 }
 
 .navbar-toggler-icon {
@@ -37,14 +32,24 @@ body
 	background-color: white;
 }
 
-.btn-primary
+.btn-success
 {
-	background-color:  #00BFFF;
+	background-color:  #006400;
+}
+
+.btn-success:hover, 
+{
+	background-color: #6B8E23;
+}
+
+.badge-success
+{
+	background-color: #6B8E23;
 }
 
 .dropdown-menu
 {
-	background-color: #00BFFF;
+	background-color: #6B8E23;
 }
 
 .dropdown-item
@@ -55,8 +60,8 @@ body
 
 .card
 {
-	background-color:  #182334;
-	color: white;
+	background-color:  white;
+	color: black;
 	text-align: center;
 	margin-top: 8px;
 }
@@ -145,7 +150,7 @@ option
 	font-weight: bold;
 }
 
-footer a
+footer a, h6
 {
 	color: white;
 }

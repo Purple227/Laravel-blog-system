@@ -107,7 +107,7 @@ class PostController extends Controller
 
        $slug_check = Post::where('slug', $post->slug)->first();
        if ($slug_check == true) {
-        session()->flash('fail', 'Please suffix your title!');
+        session()->flash('fail', 'Please modify your title!');
         return redirect()->back();
        }
        

@@ -34,7 +34,7 @@
 <form method="POST" action="{{ route('subscriber.store') }} ">
 @csrf
 <input class="form-control form-control-sm" name="email" type="email" placeholder="Type mail here" required>
-<button class="btn btn-primary btn-sm " type="submit">Submit</button>
+<button class="btn btn-success btn-sm " type="submit">Submit</button>
 </form>
 </div>
 

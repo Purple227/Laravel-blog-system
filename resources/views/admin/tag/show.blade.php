@@ -8,21 +8,21 @@
 
 <section class="">
 
-<a class="btn btn-primary btn-sm" href="{{ route('tag.index') }}">
+<a class="btn btn-success btn-sm" href="{{ route('tag.index') }}">
 <span>back</span>
 </a>
 
 
-<a class="btn btn-primary btn-sm float-right" href="{{ route('tag.edit',$tag->id) }}">
+<a class="btn btn-success btn-sm float-right" href="{{ route('tag.edit',$tag->id) }}">
 <span>edit</span>
 </a>
 
  <div class="card"> <!-- Card body start -->
 
     <div class="card-header">
-      <button type="button" class="btn btn-primary"> 
+      <button type="button" class="btn btn-success"> 
       Post in {{ $tag->name}}
-   <span class="badge badge-primary"> {{ $tag->posts->count() }} </span>
+   <span class="badge badge-success"> {{ $tag->posts->count() }} </span>
 </button>
   </div>
 
@@ -42,7 +42,7 @@
       <td>{{ str_limit($posts->title, 18) }}</td>
       <td>
      <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       View_tags
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">

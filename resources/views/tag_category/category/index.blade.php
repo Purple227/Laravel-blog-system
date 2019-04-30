@@ -42,7 +42,7 @@ Category
 
 
 
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-success">Submit</button>
 </form>
 
 
@@ -62,14 +62,14 @@ Category
 <div class="card third_layer"> <!-- Card body start -->
 
 <div class="card-head ">
-<button type="button" class="btn btn-primary"> 
+<button type="button" class="btn btn-success"> 
 @if($category_count == 0 || $category_count == 1)
 Category
 @else
 Categories
 @endif 
 
-<span class="badge badge-light "> {{ $category_count }} </span>
+<span class="badge badge-success "> {{ $category_count }} </span>
 </button>
 </div>
 
@@ -94,7 +94,7 @@ Categories
 <!-- Dropdown menu for crud action -->
 <td>
 <div class="btn-group " role="group">
-<button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 Dropdown
 </button>
 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -105,7 +105,7 @@ Dropdown
 <form action=" {{ route('category.destroy',$categories->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
-<button class="btn btn-primary" type="submit"> Delete </button>
+<button class="btn btn-success" type="submit"> Delete </button>
 </form>
 
 </div>

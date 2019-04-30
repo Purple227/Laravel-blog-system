@@ -8,7 +8,7 @@
 
 <nav class="navbar navbar-expand-lg ">
 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-<button class="navbar-toggler btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<button class="navbar-toggler btn btn-success" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon">  
 <img src=" {{ asset('images/menu.svg') }} "  width="20" height="20" alt=" signup/login " class=""  data-placement="left" title="Menu" >
 
@@ -49,13 +49,13 @@
 
 <form class="form-inline navbar_search_space" method="GET" action="{{ route('blog.search') }}" >
 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query"  value="{{ isset($query) ? $query : '' }}" required>
-<button class="btn btn-outline-primary " type="submit"> <img src=" {{ asset('images/search.svg') }} "  width="20" height="20" alt=" search ">  </button>
+<button class="btn btn-success" type="submit"> <img src=" {{ asset('images/search.svg') }} "  width="20" height="20" alt=" search ">  </button>
 </form> 
 
 
 @guest
 <div class="nav-item dropdown ">
-<a class="nav-link dropdown-toggle btn btn-outline-primary btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<a class="nav-link dropdown-toggle btn btn-success btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 <img src=" {{ asset('images/person.svg') }} "  width="20" height="20" alt=" signup/login " class="" data-toggle="tooltip" data-placement="left" title="Login/Sign Up">
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -69,7 +69,7 @@
 
 @auth
 <div class="nav-item dropdown ">
-<a class="nav-link dropdown-toggle btn btn-outline-primary btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<a class="nav-link dropdown-toggle btn btn-success btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 <img src=" {{ asset('images/logout.svg') }} "  width="20" height="20" alt=" signup/login " class="" data-toggle="tooltip" data-placement="left" title="Logout">
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">

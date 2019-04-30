@@ -10,14 +10,14 @@ Super user
 
 @include('layouts.backend.partial.error')
 
-<a class="btn btn-primary btn-sm" href="{{ route('admin.dashboard') }}">
+<a class="btn btn-success btn-sm" href="{{ route('admin.dashboard') }}">
 <span> Dashboard </span>
 </a>
 
 <div class="card"> <!-- Card body start -->
 
-<div class="card-head">
-<button type="button" class="btn btn-primary"> 
+<div class="card-header">
+<button type="button" class="btn btn-success"> 
 @if($user_count == 0 || $user_count == 1)
 Super user
 @else
@@ -26,13 +26,13 @@ Super users
 
 
 
-<span class="badge badge-primary"> {{ $user_count }} </span>
+<span class="badge badge-success"> {{ $user_count }} </span>
 </button>
 </div>
 
 
 
-  <table class="table table-bordered text-white">
+  <table class="table table-bordered ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -57,7 +57,7 @@ Super users
       <!-- Dropdown menu for crud action -->
       <td>
         <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -66,19 +66,19 @@ Super users
 <form method="post" action="{{ route('update.author',$users->id) }}"  class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-primary btn-sm" type="submit" value="Make author">
+<input class="btn btn-success btn-sm" type="submit" value="Make author">
 </form>
 
 <form method="post" action="{{ route('update.user',$users->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-primary btn-sm" type="submit" value="Make user">
+<input class="btn btn-success btn-sm" type="submit" value="Make user">
 </form>
 
 <form action=" {{ route('user.destroy',$users->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
-<button class="btn btn-primary" type="submit"> Delete </button>
+<button class="btn btn-success" type="submit"> Delete </button>
 </form>
 </tr>
 

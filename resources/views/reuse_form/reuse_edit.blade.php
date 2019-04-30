@@ -24,7 +24,7 @@
 
 <div class="form-group mb-2">
 	<!-- Add tech button--->
-<a class="btn btn-primary btn-sm float-right" href="{{ route('category.index') }}">
+<a class="btn btn-success btn-sm float-right" href="{{ route('category.index') }}">
 <span>Add New Cat</span>
 </a> <!-- Tag close here -->
 <label for="category"> Category </label>
@@ -37,7 +37,7 @@
 
 
 <div class="form-group mt-2">
-<a class="btn btn-primary btn-sm float-right" href="{{route('tag.index') }}">
+<a class="btn btn-success btn-sm float-right" href="{{route('tag.index') }}">
 <span>Add New Tag</span>
 </a> <!-- Tag close here -->
 <label for="tag"> Tag </label>

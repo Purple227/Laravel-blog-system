@@ -10,25 +10,25 @@ Post table
 
 @include('layouts.backend.partial.error')
 
-  <a class="btn btn-primary btn-sm" href="{{ route('post.create') }}">
+  <a class="btn btn-success btn-sm" href="{{ route('post.create') }}">
       <span>Add New Post</span>
   </a>
 
   <div class="card"> <!-- Card body start -->
 
-    <div class="card-head">
-      <button type="button" class="btn btn-primary"> 
+    <div class="card-header">
+      <button type="button" class="btn btn-success"> 
 @if($post_count == 0 || $post_count == 1)
   Post
 @else
   Posts
 @endif 
 
-   <span class="badge badge-primary"> {{ $post_count }} </span>
+   <span class="badge badge-success"> {{ $post_count }} </span>
 </button>
     </div>
 
-	<table class="table table-bordered text-white">
+	<table class="table table-bordered ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -67,7 +67,7 @@ Post table
       <!-- Dropdown menu for crud action -->
       <td>
         <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -76,7 +76,7 @@ Post table
        <form action=" {{ route('post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
        @csrf
        @method('DELETE')
-        <button class="btn btn-primary" type="submit"> Delete </button>
+        <button class="btn btn-success" type="submit"> Delete </button>
        </form>
     </tr>
 

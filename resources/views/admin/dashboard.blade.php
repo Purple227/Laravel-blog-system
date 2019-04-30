@@ -12,25 +12,25 @@ Dashboard
 
 	<div class="col col-sm">
 		<div class="text-center">
-			<a href="{{route('post.index')}}" class="btn btn-primary btn-lg p-3"> All post <span class="badge badge-primary">{{$posts}} </span> </a>
+			<a href="{{route('post.index')}}" class="btn btn-success btn-lg p-3"> All post <span class="badge badge-success">{{$posts}} </span> </a>
 		</div>
 	</div>
 
 	<div class="col col-sm">
 		<div class="text-center">
-			<a href="{{route('post.pending')}}" class="btn btn-primary btn-lg p-3"> Pending post <span class="badge badge-primary">{{$pending}} </span> </a>
+			<a href="{{route('post.pending')}}" class="btn btn-success btn-lg p-3"> Pending post <span class="badge badge-success">{{$pending}} </span> </a>
 		</div>
 	</div>
 
 	<div class="col col-sm">
 		<div class="text-center">
-			<button class="btn btn-primary btn-lg p-3">  All post view <span class="badge badge-primary">{{$total_view}} </span> </button>
+			<button class="btn btn-success btn-lg p-3">  All post view <span class="badge badge-success">{{$total_view}} </span> </button>
 		</div>
 	</div>
 
 	<div class="col col-sm">
 		<div class="text-center">
-			<a href="{{route('author')}}" class="btn btn-primary btn-lg p-3"> All author <span class="badge badge-primary">{{$authors}} </span></a>
+			<a href="{{route('author')}}" class="btn btn-success btn-lg p-3"> All author <span class="badge badge-success">{{$authors}} </span></a>
 		</div>
 	</div>
 
@@ -43,13 +43,13 @@ Dashboard
 		<div class="card">
 
 	 <div class="card-header">
-      <button type="button" class="btn btn-primary"> 
+      <button type="button" class="btn btn-success"> 
 Top 
-   <span class="badge badge-primary"> {{ $top_post->count() }} post </span>
+   <span class="badge badge-success"> {{ $top_post->count() }} post </span>
 </button>
     </div>
 
-	<table class="table table-bordered text-white">
+	<table class="table table-bordered ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -74,7 +74,7 @@ Top
       <!-- Dropdown menu for crud action -->
       <td>
         <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -95,13 +95,13 @@ Top
 <div class="card">
 
 	 <div class="card-header">
-      <button type="button" class="btn btn-primary"> 
+      <button type="button" class="btn btn-success"> 
 Top 
-   <span class="badge badge-primary"> {{ $top_author->count() }} </span> author
+   <span class="badge badge-success"> {{ $top_author->count() }} </span> author
 </button>
     </div>
 
-	<table class="table table-bordered text-white">
+	<table class="table table-bordered ">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -124,7 +124,7 @@ Top
       <!-- Dropdown menu for crud action -->
       <td>
         <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -150,23 +150,23 @@ Top
 	<div class="col-md-3">
 
 <div class="card">
-<div class="header"> Cat/Tag </div>
+<div class="card-header"> Cat/Tag </div>
 <div class="card-body">
 	<ul class="list-group">
   <a href="{{route('category.index')}}" class="list-group-item d-flex justify-content-between align-items-center">
     Category
-    <span class="badge badge-primary badge-pill"> {{$category}}</span>
+    <span class="badge badge-success badge-pill"> {{$category}}</span>
   </a>
   <a href="{{ route('tag.index')}}" class="list-group-item d-flex justify-content-between align-items-center">
     Tags
-    <span class="badge badge-primary badge-pill">{{$tag}}</span>
+    <span class="badge badge-success badge-pill">{{$tag}}</span>
   </a>
 </ul>
 </div>
 </div>
 
 <div class="card">
-<div class="header"> Top  <span class="badge badge-primary badge-pill"> {{ $most_active_user->count()}} </span> users </div>
+<div class="card-header"> Top  <span class="badge badge-success badge-pill"> {{ $most_active_user->count()}} </span> users </div>
 <div class="card-body">
 	<ul class="list-group">
 		@foreach($most_active_user as $user)
@@ -180,7 +180,7 @@ Top
 
 
 <div class="card">
-<div class="header"> Latest <span class="badge badge-primary badge-pill"> {{ $latest_author->count()}} </span> author </div>
+<div class="card-header"> Latest <span class="badge badge-success badge-pill"> {{ $latest_author->count()}} </span> author </div>
 <div class="card-body">
 	<ul class="list-group">
 		@foreach($latest_author as $author)
