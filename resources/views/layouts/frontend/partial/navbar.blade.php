@@ -91,9 +91,6 @@ document.getElementById('logout-form').submit();">
 <a class="dropdown-item" href=" {{ route('author.dashboard') }} "> Dashboard </a>
 @endif
 
-
-
-
 </div>
 </div>
 @endauth
