@@ -9,6 +9,17 @@
 <div class="row">
 	<div class="col-md-8 offset-2">
 
+@if(Auth::user()->role_id == 1)
+<a class="btn btn-success btn-sm" href="{{ route('admin.dashboard') }}">
+<span>back</span>
+</a>
+@else
+<a class="btn btn-success btn-sm" href="{{ route('author.dashboard') }}">
+<span>back</span> 
+</a>
+@endif
+
+
 <div class="card">
 
 	<div class="text-center">

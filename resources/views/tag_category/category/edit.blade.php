@@ -23,7 +23,7 @@
 
 <div class="card"> <!-- Card tag open -->
 
-<div class="card-header"> Edit Technology</div>
+<div class="card-header"> Edit Category</div>
 
 <div class="card-body"> <!-- Card-body open -->
 
@@ -35,7 +35,7 @@
 <div class="form-group">
 <label for="name" class=" ">Name</label>
 
-<input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" placeholder="Enter tech here " value="{{ $category->name }}">
+<input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" placeholder="Enter category here " value="{{ $category->name }}">
 
 @if ($errors->has('name'))
 <span class="invalid-feedback" role="alert">

@@ -10,6 +10,7 @@
     <title> @yield('title') </title>
 
     <!-- Scripts -->
+    @stack('script')
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->

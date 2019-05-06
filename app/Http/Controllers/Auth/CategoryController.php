@@ -39,6 +39,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->slug = $slug;
+        $category->user_id = Auth::id();
     
         $category->save();
 
@@ -90,10 +91,22 @@ class CategoryController extends Controller
 
         $category->name = $request->name;
         $category->slug = $slug;
-    
+        
+        if( $category->user_id == Auth::id() &&  Auth::user()->role_id == 2 )
+         {
         $category->save();
+        session()->flash('success', 'Task succesfull!');
+        return redirect()->route('category.index');
+         }
 
-        $request->session()->flash('success', 'Task was successful!');
+         if( Auth::user()->role_id == 1 )
+         {
+        $category->save();
+        session()->flash('success', 'Task succesfull!');
+        return redirect()->route('category.index');
+         }
+
+        $request->session()->flash('fail', 'You cannot edit someone else category!');
         return redirect()->route('category.index');
     }
 
@@ -105,10 +118,25 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-         $category = Category::find($id);
-         $category->delete();
-        
-        session()->flash('success', 'Task was successful!');
+        $category = Category::find($id);
+
+        if( $category->user_id == Auth::id() &&  Auth::user()->role_id == 2 )
+         {
+        $category->delete();
+        session()->flash('success', 'Task succesfull!');
         return redirect()->back();
+         }
+
+        if( Auth::user()->role_id == 1 )
+         {
+        $category->delete();
+        session()->flash('success', 'Task succesfull!');
+        return redirect()->back();
+         }
+
+        session()->flash('fail', 'You cannot delete someone else category!');
+        return redirect()->back();
+         
+        
     }
 }

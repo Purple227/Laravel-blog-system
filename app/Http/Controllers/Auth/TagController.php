@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tag;
+use Illuminate\Support\Facades\Auth;
 
 class TagController extends Controller
 {
@@ -38,6 +39,7 @@ class TagController extends Controller
         $tag = new Tag();
         $tag->name = $request->name;
         $tag->slug = $slug;
+        $tag->user_id = Auth::id();
     
         $tag->save();
 
@@ -90,10 +92,22 @@ class TagController extends Controller
 
         $tag->name = $request->name;
         $tag->slug = $slug;
-    
-        $tag->save();
 
-        $request->session()->flash('success', 'Task was successful!');
+        if( $tag->user_id == Auth::id() &&  Auth::user()->role_id == 2 )
+         {
+        $tag->save();
+        session()->flash('success', 'Task succesfull!');
+        return redirect()->route('tag.index');
+         }
+
+        if( Auth::user()->role_id == 1 )
+        {
+        $tag->save();
+        session()->flash('success', 'Task succesfull!');
+        return redirect()->route('tag.index');
+         }
+
+        $request->session()->flash('fail', 'You cannot edit someone else tag!');
         return redirect()->route('tag.index');
     }
 
@@ -106,8 +120,22 @@ class TagController extends Controller
     public function destroy($id)
     {
         $tag = Tag::find($id);
+
+        if( $tag->user_id == Auth::id() &&  Auth::user()->role_id == 2 )
+        {
         $tag->posts()->detach();
         $tag->delete();
+        session()->flash('success', 'Task succesfull!');
+        return redirect()->back();
+        }
+
+        if( Auth::user()->role_id == 1 )
+        {
+        $tag->posts()->detach();
+        $tag->delete();
+        session()->flash('success', 'Task succesfull!');
+        return redirect()->back();
+        }
         
         session()->flash('success', 'Task was successful!');
         return redirect()->back();

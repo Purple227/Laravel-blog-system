@@ -1,4 +1,13 @@
-
+@push('script')
+<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+  <script>
+  tinymce.init({
+    selector: '#mytextarea',
+    plugins : 'advlist autolink link image lists',
+    browser_spellcheck: true,
+  });
+  </script>
+@endpush
 
 <div class="form-group"> 
 <label for="image" class=" ">Enter image</label>
@@ -54,7 +63,7 @@
 
 <div class="form-group"> 
 <label for="body" class=" "> description </label> 
-<textarea class="form-control blur {{ $errors->has('description') ? ' is-invalid' : '' }} " id="body" rows="2" name="description" value="{{ old('description') }}" > {{ $post->description }} </textarea>
+<textarea class="form-control blur {{ $errors->has('description') ? ' is-invalid' : '' }} " id="mytextarea" rows="2" name="description" value="{{ old('description') }}" > {{ $post->description }} </textarea>
 @if ($errors->has('description'))
 <span class="invalid-feedback" role="alert">
 <strong>{{ $errors->first('description') }}</strong>

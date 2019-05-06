@@ -30,7 +30,7 @@ Tag
 <div class="form-group">
 <label for="name" class=" ">Name</label>
 
-<input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" placeholder="Enter tech here " value="{{ old('name') }}" required>
+<input type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" placeholder="Enter tag here " value="{{ old('name') }}" required>
 
 @if ($errors->has('name'))
 <span class="invalid-feedback" role="alert">

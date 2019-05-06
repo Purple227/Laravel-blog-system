@@ -57,6 +57,7 @@ Category
 <a class="dropdown-item " href="{{ route('category.index') }} ">Add/Create category</a>
 </li>
 
+@if(Auth::check() && Auth::user()->role_id == 1)
 <li class="nav-item dropdown ">
 <a class="nav-link dropdown-toggle " href=" " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 Roles
@@ -66,14 +67,14 @@ Roles
 <a class="dropdown-item " href="{{ route('author') }} "> Authors </a>
 <a class="dropdown-item " href="{{ route('author') }} "> Admin </a>
 </li>
+@endif
+
 
 <li class="nav-item dropdown ">
 <a class="nav-link dropdown-toggle " href=" " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 {{ str_limit(Auth::user()->name, 7) }}
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-<a class="dropdown-item " href="{{ route('subscriber' ) }} "> subscribers </a>
 
 <a class="dropdown-item " href="{{ route('profile.edit',Auth::id() ) }} "> Update profile </a>
 
@@ -89,6 +90,7 @@ document.getElementById('logout-form').submit();">
 
 @if(Auth::user()->role_id == 1)
 <a class="dropdown-item" href=" {{ route('admin.dashboard') }} "> Dashboard </a>
+<a class="dropdown-item " href="{{ route('subscriber' ) }} "> subscribers </a>
 @endif
 
 @if(Auth::user()->role_id == 2)

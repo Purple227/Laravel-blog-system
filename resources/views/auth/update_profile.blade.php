@@ -17,7 +17,7 @@
 
 <form action="{{ route('update.profile',$user->id) }}" method="POST" enctype="multipart/form-data">
 
- @method('PUT')
+ @method('PATCH')
  @csrf
 
 <div class="form-group row">

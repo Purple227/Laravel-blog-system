@@ -174,7 +174,7 @@ Top
 <div class="card-body">
 	<ul class="list-group">
 		@foreach($most_active_user as $user)
-  <a href="#" class="list-group-item d-flex justify-content-between align-items-center ">
+  <a href="{{route('user.profile',$user->id)}}" class="list-group-item d-flex justify-content-between align-items-center ">
     {{ str_limit($user->name, 8) }}
   </a>
   @endforeach
@@ -188,9 +188,9 @@ Top
 <div class="card-body">
 	<ul class="list-group">
 		@foreach($latest_author as $author)
-  <li class="list-group-item d-flex justify-content-between align-items-center text-dark">
+  <a  href="{{route('user.profile',$author->id)}}" class="list-group-item d-flex justify-content-between align-items-center">
     {{ str_limit($author->name, 8) }}
-  </li>
+  </a>
   @endforeach
 </ul>
 </div>
