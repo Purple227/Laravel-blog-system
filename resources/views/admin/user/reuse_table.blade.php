@@ -25,7 +25,7 @@
       <!-- Dropdown menu for crud action -->
       <td>
         <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -38,19 +38,19 @@
 <form method="post" action="{{ route('update.author',$users->id) }}"  class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make author">
+<input class="btn btn-primary btn-sm" type="submit" value="Make author">
 </form>
 
 <form method="post" action="{{ route('update.user',$users->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make user">
+<input class="btn btn-primary btn-sm" type="submit" value="Make user">
 </form>
 
 <form action=" {{ route('user.destroy',$users->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
-<button class="btn btn-success" type="submit"> Delete </button>
+<button class="btn btn-primary" type="submit"> Delete </button>
 </form>
 @break
 
@@ -59,19 +59,19 @@
 <form method="post" action="{{ route('update.user',$users->id) }}"  class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make user">
+<input class="btn btn-primary btn-sm" type="submit" value="Make user">
 </form>
 
 <form method="post" action="{{ route('update.admin',$users->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make admin">
+<input class="btn btn-primary btn-sm" type="submit" value="Make admin">
 </form>
 
 <form action=" {{ route('user.destroy',$users->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
-<button class="btn btn-success" type="submit"> Delete </button>
+<button class="btn btn-primary" type="submit"> Delete </button>
 </form>
 @break
 
@@ -79,19 +79,19 @@
 <form method="post" action="{{ route('update.author',$users->id) }}"  class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make author">
+<input class="btn btn-primary btn-sm" type="submit" value="Make author">
 </form>
 
 <form method="post" action="{{ route('update.admin',$users->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make admin">
+<input class="btn btn-primary btn-sm" type="submit" value="Make admin">
 </form>
 
 <form action=" {{ route('user.destroy',$users->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
-<button class="btn btn-success" type="submit"> Delete </button>
+<button class="btn btn-primary" type="submit"> Delete </button>
 </form>
 @break
 

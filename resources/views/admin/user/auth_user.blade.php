@@ -10,14 +10,14 @@ Sign up users
 
 @include('layouts.backend.partial.error')
 
-<a class="btn btn-success btn-sm" href="{{ route('admin.dashboard') }}">
+<a class="btn btn-primary btn-sm" href="{{ route('admin.dashboard') }}">
 <span> Dashboard </span>
 </a>
 
 <div class="card"> <!-- Card body start -->
 
 <div class="card-header">
-<button type="button" class="btn btn-success"> 
+<button type="button" class="btn btn-primary"> 
 @if($user_count == 0 || $user_count == 1)
 User
 @else
@@ -26,7 +26,7 @@ Users
 
 
 
-<span class="badge badge-success"> {{ $user_count }} </span>
+<span class="badge badge-primary"> {{ $user_count }} </span>
 </button>
 </div>
 

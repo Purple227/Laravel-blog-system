@@ -33,20 +33,20 @@
 
 <div class="form-group mb-2">
 	<!-- Add tech button--->
-<a class="btn btn-success btn-sm float-right" href="{{ route('category.index') }}">
+<a class="btn btn-primary btn-sm float-right" href="{{ route('category.index') }}">
 <span>Add New Cat</span>
 </a> <!-- Tag close here -->
 <label for="category"> Category </label>
 <div class="form-line {{ $errors->has('category') ? 'focused error' : '' }}">
 <select class="custom-select form-control" name="category_id" required>
   @foreach($category as $categories)
-  <option value="{{ $categories->id }}" class="{{old('category_id', $post->category_id) == $categories->id ? 'selected' : ''}}" >{{$categories->name }} <span class="badge badge-success"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
+  <option value="{{ $categories->id }}" class="{{old('category_id', $post->category_id) == $categories->id ? 'selected' : ''}}" >{{$categories->name }} <span class="badge badge-primary"  data-placement="left" title="No. of post"> {{$categories->posts->count()}} </span> </option> @endforeach
 </select>
 </div>
 
 
 <div class="form-group mt-2">
-<a class="btn btn-success btn-sm float-right" href="{{route('tag.index') }}">
+<a class="btn btn-primary btn-sm float-right" href="{{route('tag.index') }}">
 <span>Add New Tag</span>
 </a> <!-- Tag close here -->
 <label for="tag"> Tag </label>

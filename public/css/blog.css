@@ -6,7 +6,7 @@ body
 
 .navbar, footer
 {
-	background-color: #006400;
+	background-color:  #29B6F6;
 }
 
 .nav-link
@@ -32,14 +32,15 @@ body
 	background-color: white;
 }
 
-.btn-success
+.btn-primary
 {
-	background-color:  #006400;
+	background-color: #FFFFFF;
+	color: #000000;
 }
 
-.btn-success:hover, 
+.btn-primary:hover
 {
-	background-color: #6B8E23;
+	background-color: #29B6F6;
 }
 
 .badge-success
@@ -128,8 +129,6 @@ section, .card, footer
 	color: white;
 	background-color: #2F4F4F;
 }
-
-
 
 .btn-link
 {

@@ -8,7 +8,7 @@
 
 <nav class="navbar navbar-expand-lg ">
 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-<button class="navbar-toggler btn btn-outline-success" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<button class="navbar-toggler btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon">  
 <img src=" {{ asset('images/menu.svg') }} "  width="20" height="20" alt=" signup/login" class=""  data-placement="left" title="Menu">
 

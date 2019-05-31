@@ -18,8 +18,8 @@ Ads space
 	<div class="col-md-8">
 
 <div class="text-center">
-  <button type="button" class="btn btn-success m-2 btn-sm">
-  {{$author->name}} <span class="badge badge-success">{{$posts->count()}}</span>
+  <button type="button" class="btn btn-primary m-2 btn-sm">
+  {{$author->name}} <span class="badge badge-primary">{{$posts->count()}}</span>
   <span class="sr-only">{{$author->name}}</span>
 </button>
 </div>
@@ -39,7 +39,7 @@ Ads space
     <h5 class="card-title">{{$author->name}}</h5>
     <div class="card-subtitle lead"> About author </div>
     <p class="card-text">{{$author->about}}</p>
-    <!--a href="#" class="btn btn-success">Go somewhere</a-->
+    <!--a href="#" class="btn btn-primary">Go somewhere</a-->
   </div>
 </div>
 
@@ -47,7 +47,7 @@ Ads space
       <div class="card-body">
         <h5 class="card-title"> ADspace</h5>
         <p class="card-text"> Adspace</p>
-        <a href="#" class="btn btn-success"> see advert</a>
+        <a href="#" class="btn btn-primary"> see advert</a>
       </div>
     </div>
 

@@ -18,8 +18,8 @@ Ads space
 	<div class="col-md-8">
 
 <div class="text-center">
-  <button type="button" class="btn btn-success m-2 btn-sm">
-   Results for {{ $query }} <span class="badge badge-success">{{$posts->count()}}</span>
+  <button type="button" class="btn btn-primary m-2 btn-sm">
+   Results for {{ $query }} <span class="badge badge-primary">{{$posts->count()}}</span>
   <span class="sr-only"> Results for {{ $query }}</span>
 </button>
 </div>
@@ -37,7 +37,7 @@ Ads space
       <div class="card-body">
         <h5 class="card-title"> ADspace</h5>
         <p class="card-text"> Adspace</p>
-        <a href="#" class="btn btn-success"> see advert</a>
+        <a href="#" class="btn btn-primary"> see advert</a>
       </div>
     </div>
 
@@ -45,7 +45,7 @@ Ads space
       <div class="card-body">
         <h5 class="card-title"> ADspace</h5>
         <p class="card-text"> Adspace</p>
-        <a href="#" class="btn btn-success"> see advert</a>
+        <a href="#" class="btn btn-primary"> see advert</a>
       </div>
     </div>
 
@@ -53,7 +53,7 @@ Ads space
       <div class="card-body">
         <h5 class="card-title"> ADspace</h5>
         <p class="card-text"> Adspace</p>
-        <a href="#" class="btn btn-success"> see advert</a>
+        <a href="#" class="btn btn-primary"> see advert</a>
       </div>
     </div>
 

@@ -10,11 +10,11 @@
 	<div class="col-md-8 offset-2">
 
 @if(Auth::user()->role_id == 1)
-<a class="btn btn-success btn-sm" href="{{ route('admin.dashboard') }}">
+<a class="btn btn-primary btn-sm" href="{{ route('admin.dashboard') }}">
 <span>back</span>
 </a>
 @else
-<a class="btn btn-success btn-sm" href="{{ route('author.dashboard') }}">
+<a class="btn btn-primary btn-sm" href="{{ route('author.dashboard') }}">
 <span>back</span> 
 </a>
 @endif
@@ -54,7 +54,7 @@ Email :: {{$user->email}}
 
 @if(Auth::check() && Auth::user()->role_id == 1)
 <div class="btn-group " role="group">
-<button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 Change role
 </button>
 
@@ -67,13 +67,13 @@ Change role
 <form method="post" action="{{ route('update.author',$user->id) }}"  class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make author">
+<input class="btn btn-primary btn-sm" type="submit" value="Make author">
 </form>
 
 <form method="post" action="{{ route('update.user',$user->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make user">
+<input class="btn btn-primary btn-sm" type="submit" value="Make user">
 </form>
 
 @break
@@ -83,13 +83,13 @@ Change role
 <form method="post" action="{{ route('update.user',$user->id) }}"  class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make user">
+<input class="btn btn-primary btn-sm" type="submit" value="Make user">
 </form>
 
 <form method="post" action="{{ route('update.admin',$user->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make admin">
+<input class="btn btn-primary btn-sm" type="submit" value="Make admin">
 </form>
 
 @break
@@ -99,13 +99,13 @@ Change role
 <form method="post" action="{{ route('update.author',$user->id) }}"  class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make author">
+<input class="btn btn-primary btn-sm" type="submit" value="Make author">
 </form>
 
 <form method="post" action="{{ route('update.admin',$user->id) }}" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Make admin">
+<input class="btn btn-primary btn-sm" type="submit" value="Make admin">
 </form>
         
 @break

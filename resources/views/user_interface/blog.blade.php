@@ -30,7 +30,7 @@ Ads space
       <div class="card-body">
         <h5 class="card-title"> ADspace</h5>
         <p class="card-text"> Adspace</p>
-        <a href="#" class="btn btn-success"> see advert</a>
+        <a href="#" class="btn btn-primary"> see advert</a>
       </div>
     </div>
 
@@ -38,7 +38,7 @@ Ads space
       <div class="card-body">
         <h5 class="card-title"> ADspace</h5>
         <p class="card-text"> Adspace</p>
-        <a href="#" class="btn btn-success"> see advert</a>
+        <a href="#" class="btn btn-primary"> see advert</a>
       </div>
     </div>
 
@@ -46,7 +46,7 @@ Ads space
       <div class="card-body">
         <h5 class="card-title"> ADspace</h5>
         <p class="card-text"> Adspace</p>
-        <a href="#" class="btn btn-success"> see advert</a>
+        <a href="#" class="btn btn-primary"> see advert</a>
       </div>
     </div>
 

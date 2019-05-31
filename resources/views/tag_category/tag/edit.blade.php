@@ -16,7 +16,7 @@
 @include('layouts.backend.partial.error')
 
 
-<a class="btn btn-success btn-sm" href="{{ route('tag.index') }}">
+<a class="btn btn-primary btn-sm" href="{{ route('tag.index') }}">
 
 <span>back</span>
 </a>
@@ -47,7 +47,7 @@
 
 
 
-<button type="submit" class="btn btn-success">Submit</button>
+<button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
 

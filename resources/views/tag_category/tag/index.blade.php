@@ -42,7 +42,7 @@ Tag
 
 
 
-<button type="submit" class="btn btn-success">Submit</button>
+<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 
@@ -62,14 +62,14 @@ Tag
 <div class="card third_layer"> <!-- Card body start -->
 
 <div class="card-head ">
-<button type="button" class="btn btn-success"> 
+<button type="button" class="btn btn-primary"> 
 @if($tag_count == 0 || $tag_count == 1)
 Tag
 @else
 Tags
 @endif 
 
-<span class="badge badge-success "> {{ $tag_count }} </span>
+<span class="badge badge-primary "> {{ $tag_count }} </span>
 </button>
 </div>
 
@@ -94,7 +94,7 @@ Tags
 <!-- Dropdown menu for crud action -->
 <td>
 <div class="btn-group " role="group">
-<button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 Dropdown
 </button>
 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -104,7 +104,7 @@ Dropdown
 <form action=" {{ route('tag.destroy',$tags->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
-<button class="btn btn-success" type="submit"> Delete </button>
+<button class="btn btn-primary" type="submit"> Delete </button>
 </form>
 
 </div>

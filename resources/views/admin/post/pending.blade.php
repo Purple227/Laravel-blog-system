@@ -10,21 +10,21 @@ Post pending table
 
 @include('layouts.backend.partial.error')
 
-  <a class="btn btn-success btn-sm" href="{{ route('admin.dashboard') }}">
+  <a class="btn btn-primary btn-sm" href="{{ route('admin.dashboard') }}">
       <span>back</span>
   </a>
 
   <div class="card"> <!-- Card body start -->
 
     <div class="card-header">
-      <button type="button" class="btn btn-success"> 
+      <button type="button" class="btn btn-primary"> 
 @if($post->count() == 0 || $post->count() == 1)
   Pending post
 @else
   Pending posts
 @endif 
 
-   <span class="badge badge-success"> {{ $post->count() }} </span>
+   <span class="badge badge-primary"> {{ $post->count() }} </span>
 </button>
     </div>
 
@@ -65,7 +65,7 @@ Post pending table
       <!-- Dropdown menu for crud action -->
       <td>
         <div class="btn-group " role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -78,7 +78,7 @@ Post pending table
 <form method="post" action="{{ route('post.approve',$posts->id) }}" id="approval-form" class="dropdown-item">
 @csrf
 @method('PUT')
-<input class="btn btn-success btn-sm" type="submit" value="Approved">
+<input class="btn btn-primary btn-sm" type="submit" value="Approved">
 </form>
 @endif
 
@@ -87,7 +87,7 @@ Post pending table
 <form action=" {{ route('post.destroy',$posts->id) }}" method="POST" class="dropdown-item" >
 @csrf
 @method('DELETE')
-<button class="btn btn-success" type="submit"> Delete </button>
+<button class="btn btn-primary" type="submit"> Delete </button>
 </form>
 </tr>
 
